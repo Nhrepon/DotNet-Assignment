@@ -1,0 +1,52 @@
+@model List<Equipment>
+
+@{
+    ViewData["Title"] = "Equipment";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Equipment list</h1>
+            @if(Model == null || !Model.Any()){
+                <div class="text-center ms-auto d-flex justify-content-center align-items-center h-100">
+                    <h2>No equipments found</h2>
+                </div>         
+             }else{
+                 <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Customer</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.EquipmentId</td>
+                                <td>@item.Name</td>
+                                <td>@item.Description</td>
+                                <td>@item.Price Tk</td>
+                                <td>@item.Quantity Pcs</td>
+                                <td>@item.customer?.Name</td>
+                                <td>@item.CreatedAt.ToString("dd-MMM-yyyy")</td>
+                                <td>@item.UpdatedAt.ToString("dd-MMM-yyyy")</td>
+                            </tr>
+                        }
+                    
+                </tbody>
+            </table>
+             }
+            
+        </div>
+    </div>
+</div>
